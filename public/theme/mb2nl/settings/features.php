@@ -388,6 +388,31 @@ $yesnooptions = ['1' => get_string('yes', 'theme_mb2nl'), '0' => get_string('no'
     $setting = new admin_setting_configmb2end('theme_mb2nl/endsitemenu');
     $temp->add($setting);
 
+    $setting = new admin_setting_configmb2start2('theme_mb2nl/startperformancescripts', get_string('performancescripts', 'theme_mb2nl'));
+    $temp->add($setting);
+
+    // These libraries are only needed by pages that use the corresponding
+    // builder elements. Turn them off on sites that do not use them.
+    $name = 'theme_mb2nl/ljs_swiper';
+    $setting = new admin_setting_configcheckbox($name, get_string('ljs_swiper', 'theme_mb2nl'),
+        get_string('ljs_swiperdesc', 'theme_mb2nl'), 1);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_mb2nl/ljs_jarallax';
+    $setting = new admin_setting_configcheckbox($name, get_string('ljs_jarallax', 'theme_mb2nl'),
+        get_string('ljs_jarallaxdesc', 'theme_mb2nl'), 1);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $name = 'theme_mb2nl/ljs_typed';
+    $setting = new admin_setting_configcheckbox($name, get_string('ljs_typed', 'theme_mb2nl'),
+        get_string('ljs_typeddesc', 'theme_mb2nl'), 1);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $temp->add($setting);
+
+    $temp->add(new admin_setting_configmb2end('theme_mb2nl/endperformancescripts'));
+
     $setting = new admin_setting_configmb2start2('theme_mb2nl/startganalitycs', get_string('ganatitle', 'theme_mb2nl'));
     $temp->add($setting);
 

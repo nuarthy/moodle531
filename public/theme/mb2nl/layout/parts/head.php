@@ -39,9 +39,16 @@ $PAGE->requires->js_call_amd('theme_mb2nl/actions', 'init');
 $PAGE->requires->js_call_amd('theme_mb2nl/access', 'focusClass');
 $PAGE->requires->js_call_amd('theme_mb2nl/sidebars', 'sidebarToggle');
 $PAGE->requires->js_call_amd('theme_mb2nl/scrollpos', 'panelLink');
-$PAGE->requires->js_call_amd('theme_mb2nl/megamenu', 'setWrapPos');
-$PAGE->requires->js_call_amd('theme_mb2nl/megamenu', 'toggleSubmenus');
-$PAGE->requires->js_call_amd('theme_mb2nl/stickynav', 'init');
+
+if (theme_mb2nl_is_megamenu_plugin()) {
+    $PAGE->requires->js_call_amd('theme_mb2nl/megamenu', 'setWrapPos');
+    $PAGE->requires->js_call_amd('theme_mb2nl/megamenu', 'toggleSubmenus');
+}
+
+if (theme_mb2nl_is_stycky()) {
+    $PAGE->requires->js_call_amd('theme_mb2nl/stickynav', 'init');
+}
+
 $PAGE->requires->js_call_amd('theme_mb2nl/tgsdb', 'init');
 
 if (theme_mb2nl_theme_setting($PAGE, 'showmorebtn')) {

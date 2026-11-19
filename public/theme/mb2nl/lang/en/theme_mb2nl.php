@@ -436,6 +436,12 @@ $string['logotitle'] = 'Deprecated';
 $string['logotitledesc'] = 'Deprecated';
 $string['logow'] = 'Deprecated';
 $string['logowdesc'] = 'Deprecated';
+$string['ljs_jarallax'] = 'Load parallax library';
+$string['ljs_jarallaxdesc'] = 'Disable when no builder row uses the parallax option. Saves about 5 KB per page.';
+$string['ljs_swiper'] = 'Load carousel library';
+$string['ljs_swiperdesc'] = 'Disable when no builder element uses a carousel. Saves about 40 KB per page.';
+$string['ljs_typed'] = 'Load typed text library';
+$string['ljs_typeddesc'] = 'Disable when no heading uses typed text. Saves about 3 KB per page.';
 $string['lowercase'] = 'Lowercase';
 $string['lowsaturation'] = 'Low saturation';
 $string['mainmenu'] = 'Main menu';
@@ -546,6 +552,7 @@ plugin-tiles
 plugin-topcoll
 </pre>';
 $string['pluginname'] = 'New Learning';
+$string['performancescripts'] = 'Optional scripts';
 $string['popularlinks'] = 'Popular links:';
 $string['posheader'] = 'Header';
 $string['posheader2'] = 'Header 2';

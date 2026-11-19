@@ -249,7 +249,8 @@ function theme_mb2nl_gfonts() {
 
     $output .= '<link rel="preconnect" href="//fonts.googleapis.com">';
     $output .= '<link rel="preconnect" href="//fonts.gstatic.com" crossorigin>';
-    $output .= '<link href="//fonts.googleapis.com/css2';
+
+    $url = '//fonts.googleapis.com/css2';
 
     foreach ($fonts as $k => $f) {
 
@@ -260,12 +261,21 @@ function theme_mb2nl_gfonts() {
         $i++;
 
         $pref = $i == 1 ? '?' : '&';
-        $output .= $pref . 'family=' . $f['name'];
-        $output .= ':' . $f['style'];
+        $url .= $pref . 'family=' . $f['name'];
+        $url .= ':' . $f['style'];
 
     }
 
-    $output .= '&display=swap" rel="stylesheet">';
+    $url .= '&display=swap';
+
+    // Load the stylesheet without blocking rendering. Moodle's JS API adds
+    // the switch with a CSP nonce where CSP is enabled; the noscript tag
+    // covers browsers with JavaScript disabled.
+    $output .= '<link id="mb2nl-gfonts" rel="stylesheet" href="' . $url . '" media="print">';
+    $output .= '<noscript><link rel="stylesheet" href="' . $url . '"></noscript>';
+    $PAGE->requires->js_init_code(
+        "var s=document.getElementById('mb2nl-gfonts');if(s){s.media='all';}"
+    );
 
     return $output;
 

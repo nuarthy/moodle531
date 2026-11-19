@@ -172,7 +172,32 @@ Karena DB tidak di-merge:
 
 ---
 
-## 6. Troubleshooting
+## 6. Optimasi performa
+
+Theme MB2NL memuat tiga library builder di semua halaman secara default:
+**Swiper** (carousel), **Jarallax** (parallax), dan **Typed** (teks beranimasi).
+Jika halaman/halaman kursus tidak memakai fitur tersebut, matikan di
+*Site administration → Appearance → New Learning → Features → Optional scripts*.
+
+Pengaruhnya:
+
+| Setting | Hemat per halaman | Matikan hanya jika |
+|---|---|---|
+| Load carousel library | ~40 KB | tidak ada slider/carousel |
+| Load parallax library | ~5 KB | tidak ada row dengan opsi parallax |
+| Load typed text library | ~3 KB | tidak ada heading dengan typed text |
+
+Dua modul JS theme (megamenu dan sticky nav) juga sekarang hanya dimuat saat
+fitur terkait aktif. Font Google tidak lagi memblokir render halaman.
+
+Setelah mengubah setting theme, jalankan:
+```bash
+php admin/cli/purge_caches.php
+```
+
+---
+
+## 7. Troubleshooting
 
 | Gejala | Solusi |
 |---|---|
