@@ -68,9 +68,10 @@ function theme_mb2nl_scripts() {
         $PAGE->requires->js($themedir . '/mb2nl/script/lightslider/lightslider.js', $tb);
     }
 
-    // Scripts only for admin users.
-    // Use the 'has_capability' because the spectrum plugin is required not only on the theme settings page.
-    if (has_capability('moodle/site:config', context_system::instance()) || $tb) {
+    // jQuery UI and Spectrum are only needed by the builder and the theme
+    // settings forms, not by every page visited by an administrator.
+    $needs_colorpicker = $tb || preg_match('@^admin-setting-(themesettingmb2nl|theme_mb2nl)@', $PAGE->pagetype);
+    if ($needs_colorpicker) {
         $PAGE->requires->jquery_plugin('ui'); // This is require for page builder,
         // this is required twice (here and in the builder lib.php file).
         $PAGE->requires->js($themedir . '/mb2nl/script/spectrum/spectrum.js', $tb);

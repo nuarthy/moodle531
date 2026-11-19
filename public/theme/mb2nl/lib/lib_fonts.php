@@ -364,7 +364,9 @@ function theme_mb2nl_fontface($fontname, $woff2 = false) {
     global $CFG;
 
     $output = '';
-    $assetsur = $CFG->wwwroot . theme_mb2nl_themedir() . '/mb2nl/assets/' . $fontname . '/fonts/';
+    // Root-relative URLs work behind reverse proxies and on both HTTP and
+    // HTTPS; absolute $CFG->wwwroot URLs can be blocked as mixed content.
+    $assetsur = theme_mb2nl_themedir() . '/mb2nl/assets/' . $fontname . '/fonts/';
     $fonfamily = $fontname;
     $svgfontname = $fontname;
     $enbl = true;

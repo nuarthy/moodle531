@@ -20,7 +20,7 @@ $admin = get_admin();
 $content = file_get_contents($layout);
 
 // Resolve demo media placeholders to real URLs (what the builder does on import).
-$sampleurl = $OUTPUT->image_url('sample-data', 'local_mb2builder') . '/';
+$sampleurl = $OUTPUT->image_url('sample-data', 'local_mb2builder')->out_as_local_url(false) . '/';
 $content = str_replace('mb2sampledata:', $sampleurl, $content);
 $content = str_replace('mb2dummyimg:', 'https://dummyimage.com/', $content);
 
